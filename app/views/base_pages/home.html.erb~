@@ -1,2 +1,7 @@
-<h1>BasePages#home</h1>
-<p>Find me in app/views/base_pages/home.html.erb</p>
+<h1>LibSys</h1>
+<h2>
+  Welcome to the LibSys system. Please signup to start.
+</h2>
+<p>
+  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+</p>

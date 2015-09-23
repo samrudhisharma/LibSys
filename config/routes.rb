@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'users/signup'
+
   root 'base_pages#home'
-  get 'base_pages/help'
+  #get 'help' => get 'base_pages#home'
+  get 'help'    => 'base_pages#help'
+  get 'signup'  => 'users#signup'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
