@@ -1,11 +1,18 @@
 class SessionsController < ApplicationController
   def new
   end
+
+  def find_admin
+  user = User.find_by(email: "admin1@ncsu.edu") 
+  user.update_attributes(:admin => true)
+ end
   
    def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password]) 
+      find_admin
       log_in user
+      check_admin
       redirect_to user
     else
       flash.now[:danger] = 'Invalid email/password combination'
@@ -17,5 +24,5 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
-
+ 
 end

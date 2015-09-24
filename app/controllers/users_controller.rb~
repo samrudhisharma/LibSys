@@ -18,6 +18,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
+      ActiveRecord::Base.transaction do
+           @user.update_attributes(:usertype => 2)
+        end
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
@@ -32,7 +35,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Handle a successful update.
+      flash[:success] = "Profile updated"
+      redirect_to @user
     else
       render 'edit'
     end

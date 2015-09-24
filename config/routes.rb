@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'my_object_controller/transactions_filter'
+
   get 'sessions/new'
 
   root 'base_pages#home'
